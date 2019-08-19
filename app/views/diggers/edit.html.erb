@@ -1,0 +1,13 @@
+<div class="container">
+  <%= simple_form_for @digger do |f| %>
+  <%= f.input :name %>
+  <%= f.input :technical_specification %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :day_rate %>
+  <%= f.simple_fields_for :photo do |asset_fields| %>
+    <%= asset_fields.input :attachment, as: :file, input_html: {} %>
+  <%- end %>
+  <%= f.submit "Dig it!", class: "btn btn-secondary" %>
+<% end %>
+</div>

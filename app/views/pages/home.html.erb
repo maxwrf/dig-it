@@ -1,3 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>DIGGERZ!</h1>
+<%= form_tag diggers_path, :method => :get do %>
+<%= label_tag(:start_date_day, "Rental start:") %>
+<%= select_date(Date.today, prefix: :start_date) %>
+<%= label_tag(:end_date_day, "Rental End:") %>
+<%= select_date(Date.today, prefix: :end_date) %>
+<%= submit_tag("Search") %>
+<% end %>
 
+<h2>Dev - links (add own as need)</h2>
+<div>
+  <a class="btn btn-secondary" href="diggers" style="margin-bottom: 10px;">index (no filter)</a>
+</div>
+<div>
+  <a class="btn btn-secondary" href="digger/1" style="margin-bottom: 10px;">show (digger id:1)</a>
+</div>

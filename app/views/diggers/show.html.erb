@@ -1,0 +1,14 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @digger.photo %>);">
+  <div class="container">
+    <h1><%= @digger.name %></h1>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <ul>
+    <li>Start date: <%= @digger.start_date %></li>
+    <li>End date: <%= @digger.end_date %></li>
+    <li>Day rate: <%= @digger.day_rate %></li>
+    <li>Technical specification: <%= @digger.technical_specification %></li>
+  </ul>
+</div>

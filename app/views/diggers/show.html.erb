@@ -10,5 +10,7 @@
     <li>End date: <%= @digger.end_date %></li>
     <li>Day rate: <%= @digger.day_rate %></li>
     <li>Technical specification: <%= @digger.technical_specification %></li>
+    <li><%= link_to "✂️", digger_path(@digger), method: :delete %></li>
+    <li><%= link_to "⚙️", edit_digger_path(@digger) %></li>
   </ul>
 </div>

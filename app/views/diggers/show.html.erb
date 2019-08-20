@@ -1,6 +1,18 @@
-<div class="container">
-  <h2> Send a booking request </h2>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @digger.photo %>);">
+  <div class="container">
+    <h1><%= @digger.name %></h1>
+  </div>
+</div>
 
+<div class="container mt-3">
+  <ul>
+    <li>Start date: <%= @digger.start_date %></li>
+    <li>End date: <%= @digger.end_date %></li>
+    <li>Day rate: <%= @digger.day_rate %></li>
+    <li>Technical specification: <%= @digger.technical_specification %></li>
+  </ul>
+
+  <h2> Send a booking request </h2>
   <%= simple_form_for [@digger, @booking] do |f| %>
     <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
     <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>

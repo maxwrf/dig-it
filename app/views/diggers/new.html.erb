@@ -1,0 +1,16 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path('banner-new.jpg') %>')">
+  <h2 class="text-white pl-3 ">Upload here your own digger</h2>
+  <p class="text-white pl-3 "><em>Let people share unforgettable moments with your digger</em></p>
+</div>
+<div class="container p-4">
+  <%= simple_form_for @digger do |f| %>
+  <%= f.input :name %>
+  <%= f.input :technical_specification %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :day_rate %>
+  <%= f.input :photo %>
+   <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit "Dig it!", class: "btn btn-secondary" %>
+<% end %>
+</div>

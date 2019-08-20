@@ -2,7 +2,7 @@
 
 <div class="cards container mt_3">
   <% @diggers.each do |digger|  %>
-    <div class="card-product">
+    <div class="card-product" data-aos="fade-in">
       <%= cl_image_tag digger.photo, height: 300, width: 400, crop: :fill %>
       <div class="card-product-infos">
         <h2><%= digger.name %></h2>

@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :diggers
   has_many :bookings, through: :diggers
+
+  mount_uploader :photo, PhotoUploader
 end

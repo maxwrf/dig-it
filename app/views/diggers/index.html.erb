@@ -5,7 +5,7 @@
     <div class="card-product" data-aos="fade-in">
       <%= cl_image_tag digger.photo, height: 300, width: 400, crop: :fill %>
       <div class="card-product-infos">
-        <h2><%= digger.name %></h2>
+        <h2><%= link_to digger.name, digger_path(digger) %></h2>
         <p><%= digger.technical_specification %></p>
         <% if policy(digger).edit? %>
         <p><%= link_to "✂️", digger_path(digger), method: :delete %></p>

@@ -12,10 +12,14 @@ digger_test = Digger.new(name: "Testdigger",
                             technical_specification: "Very heavy",
                             start_date: Date.new(2019,10,9),
                             end_date: Date.new(2019,11,12),
-                            photo: "https://images.unsplash.com/photo-1495036019936-220b29b930ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
                             day_rate: 1000.9)
 
 digger_test.user = User.first
+
+
+url = "https://images.unsplash.com/photo-1495036019936-220b29b930ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+digger_test.remote_photo_url = url
+
 digger_test.save
 
 

@@ -1,6 +1,17 @@
 <h1>Index</h1>
-<ul>
+
+<div class="cards container mt_3">
   <% @diggers.each do |digger|  %>
-    <li><%= digger.name %></li>
+    <div class="card-product">
+      <%= cl_image_tag digger.photo, height: 300, width: 400, crop: :fill %>
+      <div class="card-product-infos">
+        <h2><%= digger.name %></h2>
+        <p><%= digger.technical_specification %></p>
+      </div>
+    </div>
+    <br>
   <% end %>
-</ul>
+</div>
+
+
+

@@ -1,27 +1,39 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://unsplash.com/photos/w0SnSVTXxyQ);">
+<div class="banner" style="background-image:  linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path('banner.jpg') %>');">
   <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+    <h1>Can I Dig It</h1>
+    <br>
+    <h3 class="text-white">professional excavating equipment!</h3>
+    <p>Change your life by digging holes all around the world.</p>
+    <div class="date-form text-center m-auto">
+      <%= form_tag diggers_path, :method => :get do %>
+      <div class="form-group">
+        <%= label_tag(:start_date_day, "Rental start:") %>
+        <%= select_date(Date.today, prefix: :start_date) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:end_date_day, "Rental End:") %>
+        <%= select_date(Date.today, prefix: :end_date) %>
+      </div>
+      <%= submit_tag("Search") %>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div class="container">
+  <div class="section">
+    <h2>Featured Diggers</h2>
+    <div class="d-flex flex-row flex-wrap"><% @diggers.each do |digger| %>
+        <%= render partial: "shared/featured_card", locals: {digger: digger}%>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
-  <div id="date"><%= form_tag diggers_path, :method => :get do %>
-    <%= label_tag(:start_date_day, "Rental start:") %>
-    <%= select_date(Date.today, prefix: :start_date) %>
-    <%= label_tag(:end_date_day, "Rental End:") %>
-    <%= select_date(Date.today, prefix: :end_date) %>
-    <%= submit_tag("Search") %>
-    <% end %></div>
-
+<div id="dev-links" class="container">
   <h2>Dev - links (add own as need)</h2>
-  <div>
-    <a class="btn btn-secondary" href="diggers/1" style="margin-bottom: 10px;">show (digger id:1)</a>
-  </div>
-  <div>
-    <a class="btn btn-secondary" href="diggers/search" style="margin-bottom: 10px;">search</a>
-  </div>
+  <%= link_to "new digger", new_digger_path, class: "btn btn-secondary" %>
+  <%= link_to "show (digger id:1)", digger_path(1), class: "btn btn-secondary" %>
+  <%= link_to "search", diggers_search_path, class: "btn btn-secondary" %>
 </div>

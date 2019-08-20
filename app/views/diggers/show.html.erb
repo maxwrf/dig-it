@@ -13,4 +13,11 @@
     <li><%= link_to "✂️", digger_path(@digger), method: :delete %></li>
     <li><%= link_to "⚙️", edit_digger_path(@digger) %></li>
   </ul>
+
+  <h2> Send a booking request </h2>
+  <%= simple_form_for [@digger, @booking] do |f| %>
+    <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
+    <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>
+    <%= f.submit "Request", class: "btn btn-danger" %>
+  <% end %>
 </div>

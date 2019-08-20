@@ -32,9 +32,6 @@ class DiggersController < ApplicationController
   end
 
   def index
-    # @diggers = Digger.all.each { |digger| digger.index_params = params[:end_date] }
-    # raise
-    # @diggers = policy_scope(Digger)
     diggers = policy_scope(Digger)
     if params[:start_date] && params[:end_date]
       start_date = Date.civil(params[:start_date][:year].to_i,
@@ -44,14 +41,11 @@ class DiggersController < ApplicationController
                             params[:end_date][:month].to_i,
                             params[:end_date][:day].to_i)
       if dates_validate?(start_date, end_date)
-        # @diggers = Digger.where("start_date <= :sd AND end_date >= :ed",
-        #                         sd: start_date, ed: end_date)
         @diggers = diggers.select do |digger|
           start_date <= digger.start_date && end_date >= digger.end_date
         end
       end
     elsif params[:search]
-      # @diggers = Digger.search(params[:search])
       @diggers = diggers.select do |digger|
         digger.name.downcase.match?(/.*#{params[:search].downcase}.*/) || digger.technical_specification.downcase.match?(/.*#{params[:search].downcase}.*/)
       end
@@ -66,6 +60,7 @@ class DiggersController < ApplicationController
 
   def show
     @digger = Digger.find(params[:id])
+    @booking = Booking.new
     authorize @digger
   end
 

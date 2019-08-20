@@ -5,12 +5,17 @@ class Digger < ApplicationRecord
   validates :technical_specification, presence: true
   validates :day_rate, numericality: true, presence: true
   validate :end_after_start
-  validates :start_date, :end_date, :presence => true
+  validates :start_date, :end_date, presence: true
+
+  mount_uploader :photo, PhotoUploader
+
+  def self.search(search)
+    where("name ILIKE ? OR technical_specification ILIKE ?", "%#{search}%", "%#{search}%")
+  end
 
   private
+
   def end_after_start
-    if end_date < start_date
-      errors.add(:end_date, "must be after the start date")
-    end
+    errors.add(:end_date, "must be after the start date") if end_date < start_date
   end
 end

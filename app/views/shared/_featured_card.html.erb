@@ -1,7 +1,12 @@
-<div class="card-featured-digger">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-featured-digger-infos">
-    <h2>Product name</h2>
-    <p>Product description with <strong>relevant info</strong> only.</p>
+
+<div class=".card-container-featured-digger col-6 col-lg-4">
+  <%= link_to digger_path(digger) do  %>
+  <div class="card-featured-digger">
+    <%= cl_image_tag digger.photo, height: 400, width: 400 %>
+    <div class="card-featured-digger-infos text-center">
+      <h2 id="title"><%= digger.name %></h2>
+      <p id="subdata"><%= digger.day_rate %>€ per day</p>
+    </div>
   </div>
+  <% end %>
 </div>

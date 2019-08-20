@@ -10,8 +10,12 @@
     <li>End date: <%= @digger.end_date %></li>
     <li>Day rate: <%= @digger.day_rate %></li>
     <li>Technical specification: <%= @digger.technical_specification %></li>
+    <% if policy(@digger).edit? %>
     <li><%= link_to "✂️", digger_path(@digger), method: :delete %></li>
+    <% end %>
+    <% if policy(@digger).destroy? %>
     <li><%= link_to "⚙️", edit_digger_path(@digger) %></li>
+    <% end %>
   </ul>
 
   <h2> Send a booking request </h2>

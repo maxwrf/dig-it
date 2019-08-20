@@ -5,8 +5,8 @@ class DiggersController < ApplicationController
 
   def create
     @digger = Digger.new(digger_params)
-    @user = current_user.id
-    @digger.user_id = @user
+    @user = current_user
+    @digger.user = @user
     if @digger.save
       redirect_to diggers_path
     else

@@ -1,4 +1,7 @@
-<div class="container">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path('edit.jpg') %>')">
+  <h2 class="text-white pl-3 ">Something went wrong? Edit it!</h2>
+</div>
+<div class="container p-4  ">
   <%= simple_form_for @digger do |f| %>
   <%= f.input :name %>
   <%= f.input :technical_specification %>
@@ -10,3 +13,4 @@
   <%= f.submit "Dig it!", class: "btn btn-secondary" %>
 <% end %>
 </div>
+

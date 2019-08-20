@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
     @booking.digger = @digger
     @user = current_user
     @booking.user = @user
+    authorize @booking
     @booking.errors.add(:start_date, "| digger not available") if !@booking.start_date.between?(@digger.start_date, @digger.end_date)
     @booking.errors.add(:end_date, "| digger not available") if !@booking.end_date.between?(@digger.start_date, @digger.end_date)
     if @booking.errors.any?

@@ -15,6 +15,21 @@ class BookingsController < ApplicationController
     end
   end
 
+  def received
+    #@bookings = Booking.where("user_id == ?", current_user.id)
+    # bookings.diggers.users
+    @bookings = []
+    current_user.diggers.each do |digger|
+      if digger.bookings.length.positive?
+        digger.bookings.each do |booking|
+          @bookings << booking
+        end
+      end
+    end
+    #end
+    #@bookings = Booking.where("user_id == ?", current_user.id)
+  end
+
   private
 
   def booking_params

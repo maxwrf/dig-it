@@ -1,4 +1,32 @@
 class DiggersController < ApplicationController
+  def new
+  @digger = Digger.new
+  end
+
+  def create
+    @digger = Digger.new(digger_params)
+    @user = current_user
+    @digger.user = @user
+    if @digger.save
+      redirect_to digger_path(@digger)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @digger = Digger.find(params[:id])
+  end
+
+  def update
+    @digger = Digger.find(params[:id])
+    if @digger.update(digger_params)
+      redirect_to digger_path(@digger)
+    else
+      render :edit
+    end
+  end
+
   def index
     start_date = Date.civil(params[:start_date][:year].to_i,
                             params[:start_date][:month].to_i,
@@ -24,6 +52,11 @@ class DiggersController < ApplicationController
   end
 
   private
+
+  def digger_params
+    params.require(:digger).permit(:name, :technical_specification, :start_date,
+    :end_date, :photo, :day_rate)
+  end
 
   def dates_validate?(start, end_d)
     true if start <= end_d && params[:start_date] && params[:end_date]

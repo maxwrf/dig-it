@@ -1,0 +1,48 @@
+.card-featured-digger {
+  margin: 10px;
+  overflow: hidden;
+  height: 200px;
+  background: white;
+  box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-featured-digger img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-featured-digger:hover {
+  background-color: rgba(0,40,0,0.1);
+  box-shadow: 2px 2px 15px rgba(0,40,0,0.2);
+}
+
+.card-featured-digger h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-featured-digger p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-featured-digger .card-featured-digger-infos {
+  padding: 16px;
+}
+
+.card-featured-digger #title {
+  color: $text-primary;
+}
+
+.card-featured-digger #subdata {
+  color: $text-secondary;
+}
+
+

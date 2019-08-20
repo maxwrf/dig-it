@@ -18,10 +18,12 @@
     <% end %>
   </ul>
 
-  <h2> Send a booking request </h2>
-  <%= simple_form_for [@digger, @booking] do |f| %>
-    <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
-    <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>
-    <%= f.submit "Request", class: "btn btn-danger" %>
+  <% unless current_user == @digger.user %>
+    <h2> Send a booking request </h2>
+    <%= simple_form_for [@digger, @booking] do |f| %>
+      <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
+      <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>
+      <%= f.submit "Request", class: "btn btn-danger" %>
+    <% end %>
   <% end %>
 </div>

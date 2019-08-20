@@ -5,10 +5,13 @@ class BookingsController < ApplicationController
     @booking.digger = @digger
     @user = current_user
     @booking.user = @user
-    if @booking.save
-      redirect_to root_path, notice: 'Booking request has been sent'
+    @booking.errors.add(:start_date, "| digger not available") if !@booking.start_date.between?(@digger.start_date, @digger.end_date)
+    @booking.errors.add(:end_date, "| digger not available") if !@booking.end_date.between?(@digger.start_date, @digger.end_date)
+    if @booking.errors.any?
+      render "diggers/show"
     else
-      redirect_to digger_path(@digger), notice: 'Please select a valid date'
+      @booking.save
+      redirect_to root_path, notice: 'Booking request has been sent'
     end
   end
 

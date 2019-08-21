@@ -1,0 +1,29 @@
+<h1>Bookings index</h1>
+
+<div class="cards container mt_3">
+  <% @bookings.each do |booking|  %>
+    <div class="card-product" data-aos="fade-in">
+      <%= cl_image_tag booking.digger.photo, height: 300, width: 400, crop: :fill %>
+      <div class="card-product-infos">
+        <h2>Booking requests for digger: <%= booking.digger.name %></h2>
+        <p><%= "#{booking.start_date} -> #{booking.end_date}" %></p>
+        <p><% if booking.approved == nil %>
+              <%= "Booking not approved yet" %>
+            <% elsif booking.approved == false %>
+              <%= "Booking has been declined" %>
+            <% else %>
+              <%= "Booking has been accepted" %>
+            <% end %></p>
+        <% if policy(Booking).approval? && booking.approved == nil %>
+          <p><%= link_to "Approve booking", "/bookings/#{booking.id}/approval/true" %></p>
+          <p><%= link_to "Reject booking", "/bookings/#{booking.id}/approval/false" %></p>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  <% end %>
+</div>
+
+
+
+

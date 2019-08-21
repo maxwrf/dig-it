@@ -1,6 +1,26 @@
-<h1>Index</h1>
-<ul>
+<h1>Diggers index</h1>
+
+<div class="cards container mt_3">
   <% @diggers.each do |digger|  %>
-    <li><%= digger.name %></li>
+    <div class="card-product" data-aos="fade-in">
+      <%= cl_image_tag digger.photo, height: 300, width: 400, crop: :fill %>
+      <div class="card-product-infos">
+        <h2><%= link_to digger.name, digger_path(digger) %></h2>
+        <p><%= digger.technical_specification %></p>
+        <% if policy(digger).edit? %>
+        <p><%= link_to "✂️", digger_path(digger), method: :delete %></p>
+        <% end %>
+        <% if policy(digger).destroy? %>
+        <p><%= link_to "⚙️", edit_digger_path(digger) %></p>
+        <% end %>
+        <% if current_user == digger.user %>
+          <p><%= link_to "Booking requests", digger_bookings_path(digger) %></p>
+        <% end %>
+      </div>
+    </div>
+    <br>
   <% end %>
-</ul>
+</div>
+
+
+

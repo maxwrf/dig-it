@@ -31,6 +31,11 @@ class BookingsController < ApplicationController
 
   def received
     @bookings = policy_scope(Booking)
+    #@bookings = @bookings.order("approved DESC")
+    @approved = @bookings.where(approved: true)
+    @rejected = @bookings.where(approved: false)
+    @awaiting = @bookings.where(approved: nil)
+
     authorize @bookings
   end
 

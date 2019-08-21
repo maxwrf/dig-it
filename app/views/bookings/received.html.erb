@@ -1,8 +1,16 @@
-<% @bookings.each do |booking| %>
-<ul>
-  <li><%= booking.digger.user.id %> </li>
-    <li><%= booking.digger.name %> </li>
-  <li><%= booking.start_date %></li>
-  <li><%= booking.end_date %> </li>
-    </ul>
+
+
+<h2>Awaiting Response</h2>
+<% @awaiting.each do |booking| %>
+  <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>
+<% end %>
+
+<h2>Approved</h2>
+<% @approved.each do |booking| %>
+  <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>
+<% end %>
+
+<h2>Rejected</h2>
+<% @rejected.each do |booking| %>
+  <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>
 <% end %>

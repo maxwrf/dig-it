@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :bookings, through: :diggers
 
   mount_uploader :photo, PhotoUploader
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

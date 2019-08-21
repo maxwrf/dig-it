@@ -42,7 +42,7 @@ class DiggersController < ApplicationController
                             params[:end_date][:day].to_i)
       if dates_validate?(start_date, end_date)
         @diggers = diggers.select do |digger|
-          start_date <= digger.start_date && end_date >= digger.end_date
+          start_date >= digger.start_date && end_date <= digger.end_date
         end
       end
     elsif params[:search]

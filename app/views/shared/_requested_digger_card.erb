@@ -13,8 +13,13 @@
   <% if booking.approved === true %>
     <div class="btn btn-secondary">View</div>  <!-- TODO: only if not begun -->
   <% elsif booking.approved === nil %>
+<<<<<<< HEAD
     <div class="btn btn-success"><%= link_to "Accept", "/bookings/#{booking}/approval/true" %></div>
     <div class="btn btn-danger"><%= link_to "Reject", "/bookings/#{booking}/approval/false" %></div>
+=======
+    <div class="btn btn-success"><%= link_to "Accept", "/bookings/#{booking.id}/approval/true" %></div>
+    <div class="btn btn-danger"><%= link_to "Reject", "/bookings/#{booking.id}/approval/false" %></div>
+>>>>>>> master
       <!-- TODO: only if not begun -->
   <% else %>
     <div class="btn btn-secondary">View</div>  <!-- TODO: only if not begun -->

@@ -1,5 +1,3 @@
-
-
 <h2>Awaiting Response</h2>
 <% @awaiting.each do |booking| %>
   <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>
@@ -14,3 +12,6 @@
 <% @rejected.each do |booking| %>
   <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>
 <% end %>
+
+<!-- if policy(Booking).approval? && booking.approved == nil -->
+

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :no_of_approved_bookings, if: :user_signed_in?
+  before_action :outstanding_requests_renter, if: :user_signed_in?
 
   include Pundit
 
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def outstanding_requests_renter
+    @out_req_renter = Booking.joins(:digger).where(diggers: { user_id: current_user.id }, bookings: { approved: nil })
   end
 
   def no_of_approved_bookings

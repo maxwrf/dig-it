@@ -1,0 +1,8 @@
+<% @bookings.each do |booking| %>
+<ul>
+  <li><%= booking.digger.user.id %> </li>
+    <li><%= booking.digger.name %> </li>
+  <li><%= booking.start_date %></li>
+  <li><%= booking.end_date %> </li>
+    </ul>
+<% end %>

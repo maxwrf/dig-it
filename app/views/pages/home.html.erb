@@ -1,4 +1,4 @@
-<div class="banner" style="background-image:  linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path('banner.jpg') %>');">
+<div class="banner" style="background-image:  linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path('jcb-hero.jpg') %>');">
   <div class="container">
     <h1>Can I Dig It</h1>
     <br>
@@ -38,4 +38,5 @@
   <%= link_to "search", diggers_search_path, class: "btn btn-secondary" %>
   <%= link_to "my diggers", diggers_mine_path, class: "btn btn-secondary" %>
   <%= link_to "my bookings", bookings_mine_path, class: "btn btn-secondary" %>
+  <%= link_to "bookings recived (current user)", bookings_received_path, class: "btn btn-secondary" %>
 </div>

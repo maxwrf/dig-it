@@ -12,4 +12,8 @@ class BookingPolicy < ApplicationPolicy
   def mine?
     true
   end
+
+  def received?
+    true
+  end
 end

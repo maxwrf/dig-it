@@ -29,6 +29,11 @@ class BookingsController < ApplicationController
     render 'index'
   end
 
+  def received
+    @bookings = policy_scope(Booking)
+    authorize @bookings
+  end
+
   private
 
   def booking_params

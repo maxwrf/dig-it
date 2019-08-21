@@ -24,4 +24,8 @@ class DiggerPolicy < ApplicationPolicy
   def search?
     return true
   end
+
+  def mine?
+    return true
+  end
 end

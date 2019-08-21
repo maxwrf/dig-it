@@ -1,0 +1,19 @@
+<h1>Bookings index</h1>
+
+<div class="cards container mt_3">
+  <% @bookings.each do |booking|  %>
+    <div class="card-product" data-aos="fade-in">
+      <%= cl_image_tag booking.digger.photo, height: 300, width: 400, crop: :fill %>
+      <div class="card-product-infos">
+        <h2>Booking for digger: <%= booking.digger.name %></h2>
+        <p><%= "#{booking.start_date} -> #{booking.end_date}" %></p>
+        <p><%= booking.approved ? "Booking approved" : "Booking not approved yet" %></p>
+      </div>
+    </div>
+    <br>
+  <% end %>
+</div>
+
+
+
+

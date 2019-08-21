@@ -21,6 +21,32 @@
     <% end %>
   </ul>
 
+ <div class="ui list my-3">
+    <div class="item btn btn-secondary">
+      <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <%= link_to "Message me", conversation_messages_path(conversation)%>
+          <% else %>
+          <% conversation.sender_id = current_user.id %>
+          <% recipient = @digger.user %>
+          <%= link_to "Forum", conversation_messages_path(conversation)%>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <h2> Send a booking request </h2>
+  <%= simple_form_for [@digger, @booking] do |f| %>
+    <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
+    <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>
+    <%= f.submit "Request", class: "btn btn-danger" %>
+    <% end %>
+
   <% unless current_user == @digger.user %>
     <h2> Send a booking request </h2>
     <%= simple_form_for [@digger, @booking] do |f| %>

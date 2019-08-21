@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
   end
 
   def received
-    @bookings = Booking.joins(:user, :digger).where(users: { id: current_user } )
+    @bookings = Booking.joins(:digger).where(diggers: { user_id: current_user.id })
   end
 
   private

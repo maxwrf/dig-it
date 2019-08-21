@@ -16,6 +16,19 @@ class BookingsController < ApplicationController
     end
   end
 
+  def index
+    bookings = policy_scope(Booking)
+    @bookings = bookings.select do |booking|
+      booking.digger_id === params[:digger_id].to_i
+    end
+  end
+
+  def mine
+    @bookings = current_user.bookings
+    authorize @bookings
+    render 'index'
+  end
+
   private
 
   def booking_params

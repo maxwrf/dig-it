@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
 
   get 'diggers/search', to: 'diggers#search'
+  get 'diggers/mine', to: 'diggers#mine'
 
+  get 'bookings/mine', to: 'bookings#mine'
 
   resources :diggers do
     resources :bookings

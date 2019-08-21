@@ -24,7 +24,8 @@ class BookingsController < ApplicationController
   end
 
   def mine
-    @bookings = current_user.bookings
+    # @bookings = Bookingsjoins(:digger).where(diggers: { user_id: user })
+    @bookings = Booking.where(:user_id => current_user.id)
     authorize @bookings
     render 'index'
   end

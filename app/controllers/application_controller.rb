@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :no_of_approved_bookings, if: :user_signed_in?
 
   include Pundit
 
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def no_of_approved_bookings
+    @approved_bookings = Booking.where(:approved => [true, false]).where(:user_id => current_user.id).count
   end
 end

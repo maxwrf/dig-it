@@ -1,0 +1,44 @@
+.card-requested-digger {
+  margin: 10px;
+  overflow: hidden;
+  height: 40px;
+  background: white;
+  box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.card-requested-digger img {
+  height: 100%;
+  width: 40px;
+  object-fit: cover;
+}
+
+.card-requested-digger > div {
+  margin-right: 20px;
+}
+
+.card-requested-digger .name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-requested-digger:hover {
+  background-color: rgba(0,40,0,0.1);
+  box-shadow: 2px 2px 15px rgba(0,40,0,0.2);
+}
+
+.card-requested-digger .card-requested-digger-infos {
+  padding: 16px;
+}
+
+.card-requested-digger #title {
+  color: $text-primary;
+}
+
+.card-requested-digger #subdata {
+  color: $text-secondary;
+}
+
+

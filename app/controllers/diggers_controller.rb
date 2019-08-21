@@ -76,6 +76,12 @@ class DiggersController < ApplicationController
     end
   end
 
+  def mine
+    @diggers = current_user.diggers
+    authorize @diggers
+    render 'index'
+  end
+
   private
 
   def digger_params

@@ -16,6 +16,4 @@ Rails.application.routes.draw do
   resources :diggers do
     resources :bookings
   end
-
-  get 'bookings/requests_made', to: 'bookings#made'
 end

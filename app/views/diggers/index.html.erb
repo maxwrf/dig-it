@@ -13,6 +13,9 @@
         <% if policy(digger).destroy? %>
         <p><%= link_to "⚙️", edit_digger_path(digger) %></p>
         <% end %>
+        <% if current_user == digger.user %>
+          <p><%= link_to "Booking requests", digger_bookings_path(digger) %></p>
+        <% end %>
       </div>
     </div>
     <br>

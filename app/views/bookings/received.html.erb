@@ -1,8 +1,14 @@
 <% @bookings.each do |booking| %>
 <ul>
+  <li>Booking ID: <%= booking.id %></li>
   <li><%= booking.digger.user.id %> </li>
-    <li><%= booking.digger.name %> </li>
+  <li><%= booking.digger.name %> </li>
   <li><%= booking.start_date %></li>
   <li><%= booking.end_date %> </li>
-    </ul>
+  <li><%= booking.approved ? "Approved booking" : "Not approved booking" %> </li>
+  <% if policy(Booking).approval? && booking.approved == nil %>
+    <li><%= link_to "approve booking", "/bookings/#{booking.id}/approval/true" %></li>
+    <li><%= link_to "reject booking", "/bookings/#{booking.id}/approval/false" %></li>
+  <% end %>
+  </ul>
 <% end %>

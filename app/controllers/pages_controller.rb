@@ -5,7 +5,6 @@ class PagesController < ApplicationController
     # probs takes first 8 (thought technically not ordered
     # TODO: add 'featured' attr to diggers more manual curation
     @diggers = Digger.take(8)
-
   end
 
   def dashboard

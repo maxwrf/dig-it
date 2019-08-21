@@ -62,6 +62,7 @@ class DiggersController < ApplicationController
     @digger = Digger.find(params[:id])
     @booking = Booking.new
     authorize @digger
+    @conversations = Conversation.all
   end
 
   def destroy

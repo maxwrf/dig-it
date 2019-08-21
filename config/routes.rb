@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :diggers do
     resources :bookings
   end
+
+  resources :conversations do
+    resources :messages
+  end
 end

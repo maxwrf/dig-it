@@ -1,14 +1,17 @@
-<% @bookings.each do |booking| %>
-<ul>
-  <li>Booking ID: <%= booking.id %></li>
-  <li><%= booking.digger.user.id %> </li>
-  <li><%= booking.digger.name %> </li>
-  <li><%= booking.start_date %></li>
-  <li><%= booking.end_date %> </li>
-  <li><%= booking.approved ? "Approved booking" : "Not approved booking" %> </li>
-  <% if policy(Booking).approval? && booking.approved == nil %>
-    <li><%= link_to "approve booking", "/bookings/#{booking.id}/approval/true" %></li>
-    <li><%= link_to "reject booking", "/bookings/#{booking.id}/approval/false" %></li>
-  <% end %>
-  </ul>
+<h2>Awaiting Response</h2>
+<% @awaiting.each do |booking| %>
+  <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>
 <% end %>
+
+<h2>Approved</h2>
+<% @approved.each do |booking| %>
+  <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>
+<% end %>
+
+<h2>Rejected</h2>
+<% @rejected.each do |booking| %>
+  <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>
+<% end %>
+
+<!-- if policy(Booking).approval? && booking.approved == nil -->
+

@@ -34,6 +34,14 @@ class BookingsController < ApplicationController
     authorize @bookings
   end
 
+  def approval
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    ActiveRecord::Type::Boolean.new.cast(params[:boolean]) ? @booking.approved = true : @booking.approved = false
+    @booking.save
+    redirect_to bookings_received_path
+  end
+
   private
 
   def booking_params

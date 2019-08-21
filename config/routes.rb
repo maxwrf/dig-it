@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   get 'diggers/mine', to: 'diggers#mine'
 
   get 'bookings/mine', to: 'bookings#mine'
+  get '/bookings/requests_received', to: 'bookings#received', as: 'bookings_received'
+  get 'bookings/:id/approval/:boolean', to: 'bookings#approval'
 
   resources :diggers do
     resources :bookings
   end
-
-  get '/bookings/requests_received', to: 'bookings#received', as: 'bookings_received'
 end

@@ -1,0 +1,5 @@
+
+<div class="letter <%= user_is_letters_author ? "right" : "" %>">
+  <%= cl_image_tag letter.user.photo, class: "avatar" %>
+  <div class="letter-content"><%= letter.body %></div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-sm-offset-3 mt-4">
+      <div class="chat-header"><h4><%= @channel.name %></h4></div>
+      <div class="letters">
+        <% @channel.letters.each do |letter| %>
+<!--           <h6><%= letter.user.first_name  %></h6>
+          <p><%= letter.body %></p> -->
+          <%= render "letters/letter", letter: letter, user_is_letters_author: letter.user == current_user %>
+        <% end %>
+      </div>
+      <div class="create-letter">
+        <%= simple_form_for([@channel, Letter.new], remote: true) do |f|%>
+          <%= f.input :body, label: false %>
+          <%= f.button :submit, class:"btn btn-primary button-letter mb-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :after_js do %>
+  <script>
+    console.log('where getting fired')
+    const letters = document.querySelectorAll('.letter');
+    const lastLetter = letters[letters.length - 1];
+
+    App['channel_<%= @channel.id %>'] = App.cable.subscriptions.create(
+      { channel: 'ChannelsChannel', channel_id: <%= @channel.id %> },
+      { received: (data) => {
+        if (data.current_user_id != <%= current_user.id %>) {
+          const lettersContainer = document.querySelector('.letters');
+          lettersContainer.insertAdjacentHTML('beforeend', data.letter_partial);
+          lastLetter.scrollIntoView();
+        }
+      } }
+    )
+  </script>
+<% end %>

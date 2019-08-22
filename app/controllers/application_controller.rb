@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def outstanding_requests_renter
-    @out_req_renter = Booking.joins(:digger).where(diggers: { user_id: current_user.id }, bookings: { approved: nil })
+    @out_req_renter = Booking.joins(:digger).where(diggers: { user_id: current_user.id }, bookings: { approved: nil }).count
   end
 
   def no_of_approved_bookings

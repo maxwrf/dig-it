@@ -1,9 +1,9 @@
 class Message < ActiveRecord::Base
   belongs_to :conversation
   belongs_to :user
-  validates_presence_of :body, :conversation_id, :user_id
+  validates :body, presence: true, allow_blank: false
 
-  def message_time
-    created_at.strftime("%m/%d/%y at %l:%M %p")
+  def from?(some_user)
+    user == some_user
   end
 end

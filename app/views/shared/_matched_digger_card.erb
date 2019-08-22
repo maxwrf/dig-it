@@ -1,0 +1,24 @@
+<div class="card-product digger" data-aos="fade-in">
+  <%= cl_image_tag digger.photo, height: 300, width: 400, crop: :fill %>
+  <div class="digger-name">
+    <p><%= digger.name %></p>
+  </div>
+  <div class="tech-spec">
+    <p><%= digger.technical_specification %></p>
+  </div>
+  <div class="cost-per-day">
+    <p><%= digger.day_rate %>€</p>
+    <p class="col-text-secondary">per day</p>
+  </div>
+  <div class="buttons">
+     <% if (current_user == digger.user) && !digger.bookings.empty? %>
+  <p class="btn btn-sm btn-primary"><%= link_to "Requests", digger_bookings_path(digger) %></p>
+  <% end %>
+   <% if policy(digger).edit? %>
+   <p class="btn btn-sm btn-info"><%= link_to "Edit ⚙️", edit_digger_path(digger) %></p>
+   <% end %>
+   <% if policy(digger).destroy? %>
+      <p class="btn btn-sm btn-danger"><%= link_to "Delete ✂️", digger_path(digger), method: :delete %></p>
+    <% end %>
+ </div>
+</div>

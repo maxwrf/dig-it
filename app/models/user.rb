@@ -10,6 +10,6 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def full_name
-    "#{first_name} #{last_name}"
+    first_name.nil? && last_name.nil? ? "Anonymous" : "#{first_name} #{last_name}"
   end
 end

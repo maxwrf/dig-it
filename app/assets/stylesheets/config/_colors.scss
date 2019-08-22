@@ -10,6 +10,29 @@ $gray: #0E0000;
 $light-gray: #F4F4F4;
 
 
+$header: #222222;
+$text-primary: #333333;
+$text-secondary: #666666;
+$thematic: #F2AF28;
+$thematic-inv: #001021;
+$bg: #FFFDF9;
 
-$text-primary: #333;
-$text-secondary: #666
+.col-thematic {
+  color: $thematic !important;
+}
+
+.col-thematic-inv {
+  color: $thematic_inv !important;
+}
+
+.col-header {
+  color: $header !important;
+}
+
+.col-text-primary {
+  color: $text-primary !important;
+}
+
+.col-text-secondary {
+  color: $text-secondary !important;
+}

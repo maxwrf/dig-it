@@ -18,16 +18,20 @@ class BookingsController < ApplicationController
 
   def index
     bookings = policy_scope(Booking)
-    @bookings = bookings.select do |booking|
-      booking.digger_id === params[:digger_id].to_i
-    end
+    @bookings = bookings.where(digger_id: params[:digger_id].to_i)
+    @approved = @bookings.where(approved: true)
+    @rejected = @bookings.where(approved: false)
+    @awaiting = @bookings.where(approved: nil)
+    render "bookings/received"
   end
 
   def mine
     # @bookings = Bookingsjoins(:digger).where(diggers: { user_id: user })
-    @bookings = Booking.where(:user_id => current_user.id)
+    @bookings = Booking.where(user_id: current_user.id)
     authorize @bookings
-    render 'index'
+    @approved = @bookings.where(approved: true)
+    @rejected = @bookings.where(approved: false)
+    @awaiting = @bookings.where(approved: nil)
   end
 
   def received

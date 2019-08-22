@@ -1,45 +1,35 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @digger.photo %>);">
   <div class="container">
-    <h1><%= @digger.name %></h1>
-  </div>
-</div>
-
-<div class="container mt-3">
-  <ul>
-    <li>Start date: <%= @digger.start_date %></li>
-    <li>End date: <%= @digger.end_date %></li>
-    <li>Day rate: <%= @digger.day_rate %></li>
-    <li>Technical specification: <%= @digger.technical_specification %></li>
-    <% if policy(@digger).edit? %>
-    <li><%= link_to "✂️", digger_path(@digger), method: :delete %></li>
-    <% end %>
-    <% if policy(@digger).destroy? %>
-    <li><%= link_to "⚙️", edit_digger_path(@digger) %></li>
-    <% end %>
-    <% if current_user == @digger.user %>
-    <li><%= link_to "Booking requests", digger_bookings_path(@digger) %></li>
-    <% end %>
-  </ul>
-
-  <div class="ui list">
+    <h1 class="mb-2"><%= @digger.name %></h1>
+   <div>
+    <p><em>Booking period: <%= @digger.start_date %> - <%= @digger.end_date %></em></p>
+    <p><em>Day rate: <%= @digger.day_rate %>€</em></p>
+    <p class="mb-0"><em>Technical specification:</em></p>
+    <p class="mt-1 text-white"><%= @digger.technical_specification %></p>
+    </div>
+      <div class="ui list my-2">
     <% @users.each do |user| %>
       <% if user.id != current_user.id %>
         <% if user.id == @digger.user.id %>
-      <div class="item">
-        <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+      <div class="btn btn-dark">
+        <%= link_to "Message #{user.first_name }", conversations_path(sender_id: current_user.id, recipient_id: user.id), class:"text-white", method: 'post'%>
       </div>
         <% end %>
       <% end %>
     <% end %>
   </div>
 
+  </div>
+</div>
 
+<div class="container mb-5 ">
   <% unless current_user == @digger.user %>
-    <h2> Send a booking request </h2>
+    <h2 class="mt-2"> Send a booking request </h2>
     <%= simple_form_for [@digger, @booking] do |f| %>
       <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
       <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>
       <%= f.submit "Request", class: "btn btn-danger" %>
     <% end %>
   <% end %>
+  </div>
 </div>

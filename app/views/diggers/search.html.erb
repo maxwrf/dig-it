@@ -1,3 +1,4 @@
+<%= render 'shared/navbar' %>
 <%= form_tag diggers_path, :method => :get do %>
     <%= text_field_tag(:search, params[:search], :class => "banner-typed-text", :id => "search_field", placeholder: "Enter your search query here") %>
     <%= submit_tag "Search", :name => nil %>

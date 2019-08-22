@@ -4,7 +4,6 @@ import "plugins/flatpickr";
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 
-
 initUpdateNavbarOnScroll();
 
 initAOS();

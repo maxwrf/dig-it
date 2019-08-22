@@ -1,3 +1,4 @@
+<%= render 'shared/navbar' %>
 <h2>Awaiting Response</h2>
 <% @awaiting.each do |booking| %>
   <%= render partial: "shared/requested_digger_card", locals: {booking: booking}%>

@@ -1,3 +1,4 @@
+<%= render 'navbar-home' %>
 <div class="banner-home" style="background-image:  linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1495036019936-220b29b930ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80');">
   <div class="container" id="banner-home">
     <div>
@@ -23,15 +24,46 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="section">
-    <h2>Featured Diggers</h2>
-    <div class="d-flex flex-row flex-wrap"><% @diggers.each do |digger| %>
-        <%= render partial: "shared/featured_card", locals: {digger: digger}%>
-      <% end %>
+  <h2 class="mb-4 mt-5 text-center">Featured Diggers</h2>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner container">
+      <div class="carousel-item active">
+        <% if @diggers.length >= 3 %>
+          <div class=" container d-flex d-block w-100">
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-1]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-2]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-3]}%>
+          </div>
+        <% end %>
+      </div>
+      <div class="carousel-item">
+        <% if @diggers.length >= 6 %>
+          <div class=" container d-flex d-block w-100">
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-4]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-5]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-6]}%>
+          </div>
+        <% end %>
+      </div>
+      <div class="carousel-item">
+        <% if @diggers.length >= 9 %>
+          <div class=" container d-flex d-block w-100">
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-7]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-8]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-9]}%>
+          </div>
+        <% end %>
+      </div>
     </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-</div>
 
 
 <div id="dev-links" class="container">

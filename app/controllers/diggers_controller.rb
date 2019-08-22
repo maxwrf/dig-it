@@ -63,6 +63,7 @@ class DiggersController < ApplicationController
     @booking = Booking.new
     authorize @digger
     @conversations = Conversation.all
+    @users = User.all
   end
 
   def destroy

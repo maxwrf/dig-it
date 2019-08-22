@@ -1,22 +1,33 @@
-<!--
-<div class="container">
-  <h1>#Channels</h1>
 
-  <div class="channel-cards">
-    <% @conversations.each do |conversation| %>
-      <div class="card-channel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1517089258673-4b72e709a9c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1568&q=80)">
-        <%= link_to "##{conversation.name}", conversation_path(conversation) %>
-      </div>
-    <% end %>
+<div class="ui segment">
+  <h3> <i class="far fa-envelope mt-3 ml-3" style="font-size: 30px"></i> <strong>Messages</strong></h3>
+
+  <div class="cards container mt-3">
+    <div class="item my-1">
+      <% @conversation.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <div class="message-inbox">
+            <div class="card-product my-2">
+              <% fullname = "#{recipient.first_name} #{recipient.last_name}" %>
+              <%= cl_image_tag recipient.photo,height: 80, width: 100, class: "avatar" %>
+              <div>
+              <div>
+              <%= link_to fullname, conversation_messages_path(conversation)%>
+              </div>
+              <div>
+              <%= "> " + conversation.messages.last.body %>
+              </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-
-
-
-
-  <%= simple_form_for [Conversation.new] do |f| %>
-    <%= f.input :name %>
-    <%= f.submit "New Channel", class: "btn btn-primary" %>
-  <% end %>
 </div>
 
- -->

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :diggers
   has_many :bookings, through: :diggers
+  has_many :messages, dependent: :destroy
 
   mount_uploader :photo, PhotoUploader
 

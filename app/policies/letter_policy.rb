@@ -1,16 +1,16 @@
-class ConversationPolicy < ApplicationPolicy
+class LetterPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  # def index?
-  #   return true
-  # end
+  def index?
+    return true
+  end
 
   def create?
-    return true
+    true
   end
 
   def show?

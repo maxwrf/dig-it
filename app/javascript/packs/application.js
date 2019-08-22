@@ -3,3 +3,4 @@ import { initAOS } from '../components/aos';
 import "plugins/flatpickr";
 
 initAOS();
+

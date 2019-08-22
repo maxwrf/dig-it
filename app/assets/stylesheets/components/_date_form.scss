@@ -1,9 +1,11 @@
 .date-form {
-  color: white;
+  color: $text-primary;
   font-weight: bold;
   margin-top: 20px;
   padding: 20px;
-  box-shadow: 2px 2px 2px 2px #333;
-  background-color: rgba(255,255,255,0.2);
   width: 500px;
+  background: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
 }

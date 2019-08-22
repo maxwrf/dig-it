@@ -6,3 +6,8 @@
      <li><%= link_to conversation.name, conversation_path(conversation) %></li>
     <% end %>
   </ul>
+
+<%= simple_form_for [Conversation.new] do |f| %>
+  <%= f.input :name %>
+  <%= f.submit "New Channel", class: "btn btn-primary" %>
+<% end %>

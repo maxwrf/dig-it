@@ -30,4 +30,20 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.includes(messages: :user).find(params[:id])
     authorize @conversation
   end
+
+  def create
+    @conversation = Conversation.new(conv_params)
+    authorize @conversation
+    if @conversation.save
+      redirect_to conversation_path(@conversation)
+    else
+      render :index
+    end
+  end
+
+  private
+
+  def conv_params
+    params.require(:conversation).permit(:name)
+  end
 end

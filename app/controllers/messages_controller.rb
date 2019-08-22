@@ -35,9 +35,6 @@ class MessagesController < ApplicationController
     @message.user = current_user
     authorize @message
     if @message.save
-      ActionCable.server.broadcast("conversation_#{@conversation.id}", {
-        message_partial: render(partial: 'messages/message', locals: {message: @message})
-      })
       respond_to do |format|
         format.html { redirect_to conversations_path(@conversation) }
         format.js

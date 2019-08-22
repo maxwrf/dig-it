@@ -9,9 +9,9 @@ class ConversationPolicy < ApplicationPolicy
   #   return true
   # end
 
-  # def create?
-  #   return true
-  # end
+  def create?
+    return true
+  end
 
   def show?
     true

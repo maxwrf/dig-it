@@ -12,7 +12,8 @@
             <strong><%= user.first_name %></strong> <%= message.message_time %></div>
           <div class="list">
             <% if message.user_id == current_user.id %>
-              <div class="content-text my-2 ml-3 bg-primary text-white d-inline-flex chat-symbol">
+              <div class="content-text my-2 ml-3 text-white d-inline-flex chat-symbol"
+              style="background-color: rgb(29, 161, 242);">
                 <%= message.body %>
             <% else %>
               <div class="content-text my-2 ml-3 bg-white d-inline-flex chat-symbol">

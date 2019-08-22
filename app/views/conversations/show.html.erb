@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 ">
+    <div class="col-sm-12 col-sm-offset-3 mt-4">
       <div class="chat-header"><h4><%= @conversation.name %></h4></div>
       <div class="messages">
         <% @conversation.messages.each do |message| %>
@@ -12,7 +12,7 @@
       <div class="create-message">
         <%= simple_form_for([@conversation, Message.new], remote: true) do |f|%>
           <%= f.input :body, label: false %>
-          <%= f.button :submit, class:"button-message" %>
+          <%= f.button :submit, class:"btn btn-primary button-message mb-4" %>
         <% end %>
       </div>
     </div>

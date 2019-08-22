@@ -1,0 +1,10 @@
+
+<% if @letter.errors.any? %>
+  // handle validation errors later
+<% else %>
+  var lettersContainer = document.querySelector('.letters');
+  lettersContainer.insertAdjacentHTML('beforeend', '<%= j render "letter", letter: @letter, user_is_letters_author: true %>');
+  var input = document.querySelector('#letter_body');
+  input.value = '';
+  input.blur();
+<% end %>

@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+  resources :channels, only: [:show, :index, :create] do
+    resources :letters, only: [:create]
+  end
+
 end

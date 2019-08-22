@@ -10,15 +10,17 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
+
     <div id="page-container">
       <div id="content-wrap">
-        <%= render 'shared/navbar' %>
         <%= yield %>
         <%= render 'shared/flashes' %>
       </div>
     <%= render 'shared/footer' %>
     </div>
+
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+    <%= yield :after_js %>
   </body>
 </html>

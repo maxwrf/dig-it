@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
-  # resources :conversations, only: [:show, :index, :create] do
-  #   resources :messages, only: [:create]
-  # end
+  resources :conversations do
+    resources :messages
+  end
 
   resources :channels, only: [:show, :index, :create] do
     resources :letters, only: [:create]

@@ -5,15 +5,11 @@ class ConversationPolicy < ApplicationPolicy
     end
   end
 
-  # def index?
-  #   return true
-  # end
-
-  def create?
+  def index?
     return true
   end
 
-  def show?
-    true
+  def create?
+    return true
   end
 end

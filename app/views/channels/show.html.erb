@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-sm-offset-3 mt-4">
-      <div class="chat-header"><h4><%= @channel.name %></h4></div>
+      <div class="chat-header"><h4>You are on channel #<%= @channel.name %></h4></div>
       <div class="letters">
         <% @channel.letters.each do |letter| %>
 <!--           <h6><%= letter.user.first_name  %></h6>

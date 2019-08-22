@@ -1,10 +1,10 @@
 
 <div class="container">
-  <h1>#Channels</h1>
+  <h1 class="mt-3">#Channels</h1>
 
   <div class="channel-cards">
     <% @channels.each do |channel| %>
-      <div class="card-channel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1517089258673-4b72e709a9c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1568&q=80)">
+      <div class="card-channel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=channel.photo%>)">
         <%= link_to "##{channel.name}", channel_path(channel) %>
       </div>
     <% end %>
@@ -12,9 +12,10 @@
 
 
 
-
+  <h4 class="mt-5">Add a new Channel ✚</h4>
   <%= simple_form_for [Channel.new] do |f| %>
     <%= f.input :name %>
+    <%= f.input :photo %>
     <%= f.submit "New Channel", class: "btn btn-primary" %>
   <% end %>
 </div>

@@ -19,31 +19,31 @@ class ConversationsController < ApplicationController
 
   # private
 
-  # def conversation_params
-  #   params.permit(:sender_id, :recipient_id)
+  # # def conversation_params
+  # #   params.permit(:sender_id, :recipient_id)
+  # # end
+  # def index
+  #   @conversations = policy_scope(Conversation)
   # end
-  def index
-    @conversations = policy_scope(Conversation)
-  end
 
-  def show
-    @conversation = Conversation.includes(messages: :user).find(params[:id])
-    authorize @conversation
-  end
+  # def show
+  #   @conversation = Conversation.includes(messages: :user).find(params[:id])
+  #   authorize @conversation
+  # end
 
-  def create
-    @conversation = Conversation.new(conv_params)
-    authorize @conversation
-    if @conversation.save
-      redirect_to conversation_path(@conversation)
-    else
-      render :index
-    end
-  end
+  # def create
+  #   @conversation = Conversation.new(conv_params)
+  #   authorize @conversation
+  #   if @conversation.save
+  #     redirect_to conversation_path(@conversation)
+  #   else
+  #     render :index
+  #   end
+  # end
 
-  private
+  # private
 
-  def conv_params
-    params.require(:conversation).permit(:name)
-  end
+  # def conv_params
+  #   params.require(:conversation).permit(:name)
+  # end
 end

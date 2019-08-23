@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("redis://rediscloud:8SPs5ZCNZ9nALZEJ6dJztTwlYgv3RgXU@redis-16110.c77.eu-west-1-1.ec2.cloud.redislabs.com:16110") { "redis://localhost:6379/1" } %>
+  url: <%= ENV['redis://rediscloud:8SPs5ZCNZ9nALZEJ6dJztTwlYgv3RgXU@redis-16110.c77.eu-west-1-1.ec2.cloud.redislabs.com:16110'] %>
   channel_prefix: dig-it_production

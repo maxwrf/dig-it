@@ -53,7 +53,7 @@
 }
 
 .card-product .request-title {
-  font-size: 0.7em;
+  font-size: 16px;
   color: $thematic-inv;
   font-weight: bold;
 }
@@ -70,7 +70,7 @@
 .card-product .renter-name,
 .card-product .dates, {
   color: $header;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .card-product .dates, {
@@ -112,4 +112,5 @@
 .card-product.digger .buttons {
   width: 20%;
 }
+
 

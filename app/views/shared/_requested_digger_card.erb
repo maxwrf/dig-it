@@ -28,17 +28,17 @@
     <% request_days = (booking.end_date - booking.start_date).to_i %>
     <% day_string = request_days == 1 ? "day" : "days" %>
     <% string = "#{request_days} #{day_string}" %>
-    <p>(<%= string %>)</p>
+    <p class="">(<%= string %>)</p>
   </div>
   <div>
     <% if booking.approved === true %>
-    <p class="btn btn-sm btn-primary">View</p> <!-- TODO: only if not begun -->
+    <p class="btn btn-sm btn-primary "><%= link_to "View",digger_path(booking.digger.id)  %></p> <!-- TODO: only if not begun -->
     <% elsif booking.approved === nil %>
-    <p class="btn btn-sm btn-success"><%= link_to "Accept", "/bookings/#{booking.id}/approval/true" %></p>
-    <p class="btn btn-sm btn-danger"><%= link_to "Reject", "/bookings/#{booking.id}/approval/false" %></p>
+    <p class="btn btn-sm btn-success "><%= link_to "Accept", "/bookings/#{booking.id}/approval/true", class:"text-white" %></p>
+    <p class="btn btn-sm btn-danger"><%= link_to "Reject", "/bookings/#{booking.id}/approval/false", class:"text-white" %></p>
     <!-- TODO: only if not begun -->
     <% else %>
-    <p class="btn btn-sm btn-info">View</p>  <!-- TODO: only if not begun -->
+    <p class="btn btn-sm btn-primary "><%= link_to "View",digger_path(booking.digger.id)  %></p>  <!-- TODO: only if not begun -->
     <% end %>
   </div>
 </div>

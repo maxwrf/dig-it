@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Booking requests received</h2>
   <% unless @awaiting.empty? %>
-    <h4 class="mt-3">Awaiting Response</h4>
+    <h4 class="mt-3 ">Awaiting Response</h4>
     <% @awaiting.each do |booking| %>
       <%= render partial: "shared/requested_digger_card", locals: {booking: booking, variant: 'req_received'}%>
     <% end %>

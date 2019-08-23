@@ -33,7 +33,7 @@
   <div>
     <% if booking.approved === true %>
     <p class="btn btn-sm btn-primary "><%= link_to "View",digger_path(booking.digger.id)  %></p> <!-- TODO: only if not begun -->
-    <% elsif booking.approved === nil %>
+    <% elsif booking.approved === nil && variant == 'req_received' %>
     <p class="btn btn-sm btn-success "><%= link_to "Accept", "/bookings/#{booking.id}/approval/true", class:"text-white" %></p>
     <p class="btn btn-sm btn-danger"><%= link_to "Reject", "/bookings/#{booking.id}/approval/false", class:"text-white" %></p>
     <!-- TODO: only if not begun -->

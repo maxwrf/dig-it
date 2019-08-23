@@ -25,4 +25,6 @@ Rails.application.routes.draw do
     resources :letters, only: [:create]
   end
 
+  mount ActionCable.server => "/cable"
+
 end

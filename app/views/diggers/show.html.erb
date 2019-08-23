@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div class="container mb-5 ">
+<div class="container">
   <% unless current_user == @digger.user %>
     <h2 class="mt-2"> Send a booking request </h2>
     <%= simple_form_for [@digger, @booking] do |f| %>

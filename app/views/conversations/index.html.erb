@@ -14,7 +14,7 @@
             <% recipient = User.find(conversation.sender_id) %>
           <% end %>
           <div class="message-inbox">
-            <div class="card-product my-2">
+            <div class="cards-product my-2">
               <% fullname = "#{recipient.first_name} #{recipient.last_name}" %>
               <%= cl_image_tag recipient.photo,height: 80, width: 100, class: "avatar" %>
               <div>

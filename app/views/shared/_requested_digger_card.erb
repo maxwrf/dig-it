@@ -12,9 +12,10 @@
     <p class="request-title">From:</p>
     <p class="renter-name"><%= booking.user.full_name %></p>
     <% end %>
-    <% ago = (booking.created_at - Time.now).to_i %>
+    <% ago = (booking.created_at - DateTime.now)/-3600/24%>
+    <% ago = ago.to_f.round %>
     <% if ago > 1 %>
-    <% message = "#{ago} day ago" %>
+    <% message = "#{ago} days ago" %>
     <% else %>
     <% message = ago == 0 ? "Today" : "Yesterday" %>
     <% end %>

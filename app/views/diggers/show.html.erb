@@ -2,10 +2,12 @@
   <div class="container">
     <h1 class="mb-2"><%= @digger.name %></h1>
    <div>
-    <p><em>Booking period: <%= @digger.start_date %> - <%= @digger.end_date %></em></p>
-    <p><em>Day rate: <%= @digger.day_rate %>€</em></p>
-    <p class="mb-0"><em>Technical specification:</em></p>
-    <p class="mt-1 text-white"><%= @digger.technical_specification %></p>
+    <% if @digger.user != current_user %>
+      <p><em>Booking period: <%= @digger.start_date %> - <%= @digger.end_date %></em></p>
+      <p><em>Day rate: <%= @digger.day_rate %>€</em></p>
+      <p class="mb-0"><em>Technical specification:</em></p>
+      <p class="mt-1 text-white"><%= @digger.technical_specification %></p>
+    <% end %>
     </div>
       <div class="ui list my-2">
     <% @users.each do |user| %>
@@ -22,7 +24,18 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mt-3 h5">
+  <% if @digger.user == current_user %>
+    <div>
+      <p><em>Booking period: <%= @digger.start_date %> - <%= @digger.end_date %></em></p>
+      <p><em>Day rate: <%= @digger.day_rate %>€</em></p>
+      <p class="mb-0"><em>Technical specification:</em></p>
+      <p class="mt-1 text-black"><%= @digger.technical_specification %></p>
+    </div>
+  <% end %>
+</div>
+
+<div class="container mb-5 ">
   <% unless current_user == @digger.user %>
     <h2 class="mt-2"> Send a booking request </h2>
     <%= simple_form_for [@digger, @booking] do |f| %>

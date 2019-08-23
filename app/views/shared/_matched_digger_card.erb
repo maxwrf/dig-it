@@ -11,8 +11,11 @@
     <p class="col-text-secondary">per day</p>
   </div>
   <div class="buttons">
-     <% if (current_user == digger.user) && !digger.bookings.empty? %>
+  <% if (current_user == digger.user) && !digger.bookings.empty? %>
   <p class="btn btn-sm btn-primary"><%= link_to "Requests", digger_bookings_path(digger) %></p>
+  <% end %>
+  <% if current_user != digger.user %>
+  <p class="btn btn-sm btn-primary"><%= link_to "View", digger_path(digger) %></p>
   <% end %>
    <% if policy(digger).edit? %>
    <p class="btn btn-sm btn-info"><%= link_to "Edit ⚙️", edit_digger_path(digger) %></p>

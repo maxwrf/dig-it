@@ -35,3 +35,5 @@ gem 'carrierwave', '~> 1.2'
 
 gem 'pundit'
 
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'

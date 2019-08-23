@@ -19,6 +19,9 @@
               <%= link_to fullname, conversation_messages_path(conversation)%>
               </div>
               <div>
+                <%= conversation.messages.last.message_time %>
+              </div>
+              <div>
               <%= "> " + conversation.messages.last.body %>
               </div>
               </div>

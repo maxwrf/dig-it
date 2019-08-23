@@ -12,7 +12,7 @@
       <div class="create-letter">
         <%= simple_form_for([@channel, Letter.new], remote: true) do |f|%>
           <%= f.input :body, label: false %>
-          <%= f.button :submit, class:"btn btn-primary button-letter mb-4" %>
+          <%= f.button :submit, 'Send message!', class:"btn btn-primary button-letter mb-4" %>
         <% end %>
       </div>
     </div>

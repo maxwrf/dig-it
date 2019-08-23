@@ -2,7 +2,7 @@
 <div class="container">
   <h1 class="mt-3">#Channels</h1>
 
-  <div class="channel-cards">
+  <div class="channel-cards" div data-aos="flip-up">
     <% @channels.each do |channel| %>
       <div class="card-channel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=channel.photo%>)">
         <%= link_to "##{channel.name}", channel_path(channel) %>

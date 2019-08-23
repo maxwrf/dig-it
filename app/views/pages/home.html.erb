@@ -72,7 +72,7 @@
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner container">
 
-      <% newest = [@diggers[0], @diggers[1], @diggers[2]] %>
+      <% newest = [@diggers[-1], @diggers[-2], @diggers[-3]] %>
 
       <div class="carousel-item active">
         <% if newest.length >= 3 %>

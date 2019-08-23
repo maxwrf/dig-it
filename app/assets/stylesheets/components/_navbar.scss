@@ -1,25 +1,16 @@
-.navbar-lewagon {
+.navbar-all {
   justify-content: space-between;
-  background-color: transparent;
-  transition: 0.2s background-color ease;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
-.navbar-lewagon-white {
   background-color: white;
 }
 
-.navbar-lewagon .text-color-black {
-  color: #202528;
+.navbar-all .navbar-collapse {
+  flex-grow: 0;
 }
 
-.navbar-hidden {
-  opacity: 0;
+.navbar-all .navbar-brand img {
+  width: 40px;
+}
+
+.navbar-all .text-color-black {
+  color: #202528;
 }

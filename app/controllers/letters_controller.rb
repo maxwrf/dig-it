@@ -1,4 +1,5 @@
 class LettersController < ApplicationController
+  before_action :flag_other
     def create
     @letter = Letter.new(letter_params)
     @channel = Channel.find(params[:channel_id])
@@ -22,5 +23,9 @@ class LettersController < ApplicationController
 
   def letter_params
     params.require(:letter).permit(:body)
+  end
+
+  def flag_other
+    @other = true
   end
 end

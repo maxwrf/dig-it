@@ -1,5 +1,6 @@
 class ChannelsController < ApplicationController
-    def index
+  before_action :flag_other
+  def index
     @channels = policy_scope(Channel)
   end
 
@@ -22,5 +23,9 @@ class ChannelsController < ApplicationController
 
   def channel_params
     params.require(:channel).permit(:name, :photo)
+  end
+
+  def flag_other
+    @other = true
   end
 end

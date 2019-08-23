@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
+  before_action :flag_home, only: :home
+  before_action :flag_other, only: [:dashboard, :dashboard_edit, :dashboard_update]
 
   def home
     # probs takes first 8 (thought technically not ordered
@@ -27,5 +29,13 @@ class PagesController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :photo)
+  end
+
+  def flag_home
+    @home = true
+  end
+
+  def flag_other
+    @other = true
   end
 end

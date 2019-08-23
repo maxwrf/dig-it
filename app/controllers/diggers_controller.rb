@@ -1,4 +1,5 @@
 class DiggersController < ApplicationController
+  before_action :flag_other
   def new
     @digger = Digger.new
     authorize @digger
@@ -92,5 +93,9 @@ class DiggersController < ApplicationController
 
   def dates_validate?(start, end_d)
     true if start <= end_d
+  end
+
+  def flag_other
+    @other = true
   end
 end

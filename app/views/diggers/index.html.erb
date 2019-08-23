@@ -1,27 +1,6 @@
-<%= render 'shared/navbar' %>
-<h1>Diggers index</h1>
-
-<div class="cards container mt_3">
-  <% @diggers.each do |digger|  %>
-    <div class="card-product" data-aos="fade-in">
-      <%= cl_image_tag digger.photo, height: 300, width: 400, crop: :fill %>
-      <div class="card-product-infos">
-        <h2><%= link_to digger.name, digger_path(digger) %></h2>
-        <p><%= digger.technical_specification %></p>
-        <% if policy(digger).edit? %>
-        <p><%= link_to "✂️", digger_path(digger), method: :delete %></p>
-        <% end %>
-        <% if policy(digger).destroy? %>
-        <p><%= link_to "⚙️", edit_digger_path(digger) %></p>
-        <% end %>
-        <% if current_user == digger.user %>
-          <p><%= link_to "Booking requests", digger_bookings_path(digger) %></p>
-        <% end %>
-      </div>
-    </div>
-    <br>
-  <% end %>
+<div class="container">
+  <h2 class="mt-3">Matching Diggers</h2>
+    <% @diggers.each do |digger| %>
+      <%= render partial: "shared/matched_digger_card", locals: {digger: digger}%>
+    <% end %>
 </div>
-
-
-

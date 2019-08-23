@@ -1,0 +1,31 @@
+// overrides bootstrap
+// !!! set background colours in bootstrap-colours .scss
+
+.btn-primary {
+    a {
+      color: $white;
+    }
+}
+
+
+.btn-thematic-inv {
+    color: $thematic;
+    background-color: $thematic-inv;
+    a {
+      color: $thematic;
+      &:hover {
+        color: $thematic-blur;
+      }
+    }
+}
+
+.btn-thematic {
+    color: $thematic-inv;
+    background-color: $thematic;
+    a {
+      color: $thematic-inv;
+      &:hover {
+        color: $thematic-inv-blur;
+      }
+    }
+}

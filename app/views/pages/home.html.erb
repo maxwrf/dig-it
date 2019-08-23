@@ -66,5 +66,23 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+
+  <div style="margin-bottom: 50px">
+  <h2 class="mb-4 mt-5 text-center">Recently added Diggers</h2>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner container">
+
+      <% newest = [@diggers[0], @diggers[1], @diggers[2]] %>
+
+      <div class="carousel-item active">
+        <% if newest.length >= 3 %>
+          <div class=" container d-flex d-block w-100">
+            <%= render partial: "shared/featured_card", locals: {digger: newest[-1]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: newest[-2]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: newest[-3]}%>
+          </div>
+        <% end %>
+      </div>
+  </div>
  </div>
 

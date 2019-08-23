@@ -32,15 +32,6 @@
       <div class="carousel-item active">
         <% if @diggers.length >= 3 %>
           <div class=" container d-flex d-block w-100">
-            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-1]}%>
-            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-2]}%>
-            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-3]}%>
-          </div>
-        <% end %>
-      </div>
-      <div class="carousel-item">
-        <% if @diggers.length >= 6 %>
-          <div class=" container d-flex d-block w-100">
             <%= render partial: "shared/featured_card", locals: {digger: @diggers[-4]}%>
             <%= render partial: "shared/featured_card", locals: {digger: @diggers[-5]}%>
             <%= render partial: "shared/featured_card", locals: {digger: @diggers[-6]}%>
@@ -48,11 +39,20 @@
         <% end %>
       </div>
       <div class="carousel-item">
-        <% if @diggers.length >= 9 %>
+        <% if @diggers.length >= 6 %>
           <div class=" container d-flex d-block w-100">
             <%= render partial: "shared/featured_card", locals: {digger: @diggers[-7]}%>
             <%= render partial: "shared/featured_card", locals: {digger: @diggers[-8]}%>
             <%= render partial: "shared/featured_card", locals: {digger: @diggers[-9]}%>
+          </div>
+        <% end %>
+      </div>
+      <div class="carousel-item">
+        <% if @diggers.length >= 9 %>
+          <div class=" container d-flex d-block w-100">
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-1]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-2]}%>
+            <%= render partial: "shared/featured_card", locals: {digger: @diggers[-3]}%>
           </div>
         <% end %>
       </div>

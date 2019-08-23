@@ -27,6 +27,7 @@
             <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
             <%= link_to "Messages", conversations_path, class: "dropdown-item" %>
             <%= link_to "My diggers", diggers_mine_path, class: "dropdown-item" %>
+            <%= link_to "Add digger", new_digger_path, class: "dropdown-item" %>
             <div class="dropdown-item">
               <%= link_to "All bookings", bookings_mine_path, class: "text-color-black" %>
               <% if @approved_bookings > 0 %>

@@ -1,4 +1,5 @@
 class ConversationsController < ApplicationController
+  before_action :flag_other
  def index
    conversations = policy_scope(Conversation)
    @users = User.all
@@ -21,5 +22,9 @@ class ConversationsController < ApplicationController
 
  def conversation_params
    params.permit(:sender_id, :recipient_id)
+ end
+
+ def flag_other
+   @other = true
  end
 end

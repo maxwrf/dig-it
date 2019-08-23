@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :flag_other
   def create
     @booking = Booking.new(booking_params)
     @digger = Digger.find(params[:digger_id])
@@ -52,5 +53,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  def flag_other
+    @other = true
   end
 end

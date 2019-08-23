@@ -11,6 +11,9 @@
   </head>
   <body>
 
+    <%= render 'pages/navbar_home' if @home %>
+    <%= render 'shared/navbar' if @other %>
+
     <div id="page-container">
       <div id="content-wrap">
         <%= yield %>

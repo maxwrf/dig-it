@@ -4,7 +4,9 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .card-product img {
@@ -22,7 +24,7 @@
 .card-product p {
   font-size: 12px;
   line-height: 1.4;
-  opacity: .7;
+  opacity: 0.7;
   margin-bottom: 0;
   margin-top: 8px;
 }
@@ -30,3 +32,84 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+//
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+
+// specific to booking cards
+.card-product.request > div {
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 20%;
+}
+
+.card-product .request-title {
+  font-size: 0.7em;
+  color: $thematic-inv;
+  font-weight: bold;
+}
+
+.card-product .btn {
+  margin-bottom: 10px;
+}
+
+.card-product .first {
+  margin-left: 10px;
+}
+
+.card-product .digger-name,
+.card-product .renter-name,
+.card-product .dates, {
+  color: $header;
+  font-size: 18px;
+}
+
+.card-product .dates, {
+  line-height: 0.8;
+}
+
+// specific to digger (search results) cards
+.card-product.digger {
+  align-items: center;
+}
+
+.card-product.digger > div {
+  margin-top: 0px;
+  margin-right: 20px;
+}
+
+.card-product.digger .btn {
+  margin: 2px;
+}
+
+.card-product.digger .digger-name {
+  width: 20%;
+  p {
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.card-product.digger .tech-spec {
+  width: 30%;
+  padding: 10px 0px;
+}
+
+.card-product.digger .cost-per-day {
+  width: 10%;
+}
+
+.card-product.digger .buttons {
+  width: 20%;
+}
+

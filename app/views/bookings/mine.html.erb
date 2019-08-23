@@ -1,27 +1,26 @@
 <div class="container">
-  <h2>Booking requests received</h2>
+  <h2>Your requests book a diggger</h2>
   <% unless @awaiting.empty? %>
     <h4 class="mt-3">Awaiting Response</h4>
     <% @awaiting.each do |booking| %>
-      <%= render partial: "shared/requested_digger_card", locals: {booking: booking, variant: 'req_received'}%>
+      <%= render partial: "shared/requested_digger_card", locals: {booking: booking, variant: 'req_made' }%>
     <% end %>
   <% end %>
 
   <% unless @approved.empty? %>
     <h4 class="mt-3">Approved</h4>
     <% @approved.each do |booking| %>
-      <%= render partial: "shared/requested_digger_card", locals: {booking: booking, variant: 'req_received'}%>
+      <%= render partial: "shared/requested_digger_card", locals: {booking: booking, variant: 'req_made' }%>
     <% end %>
   <% end %>
 
   <% unless @rejected.empty? %>
     <h4 class="mt-3">Rejected</h4>
     <% @rejected.each do |booking| %>
-      <%= render partial: "shared/requested_digger_card", locals: {booking: booking, variant: 'req_received'}%>
+      <%= render partial: "shared/requested_digger_card", locals: {booking: booking, variant: 'req_made' }%>
     <% end %>
   <% end %>
   </div>
 
-
-
+<!-- if policy(Booking).approval? && booking.approved == nil -->
 

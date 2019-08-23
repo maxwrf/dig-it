@@ -1,23 +1,44 @@
-<div class="col-12">
-   <div class="card-requested-digger">
-  <%= cl_image_tag booking.digger.photo, height: 40, width: 40 %>
-  <div class="name"><%= booking.digger.name %></div>
-  <div class="renter-name"><%= booking.digger.user.full_name %></div>
-  <!-- TODO: once renter profile pages link_to booking.digger.user.full_name, user_path(booking.user) %> -->
-  <div class="dates">
-    <div><%= booking.start_date %></div>
-    <div> <%= booking.end_date %></div>
-    <div> 97%## </div> <!-- TODO -->
+<div class="card-product request" data-aos="fade-in">
+  <%= cl_image_tag booking.digger.photo, height: 300, width: 400, crop: :fill %>
+  <div class="first">
+    <p class="request-title">Request for:</p>
+    <p class="digger-name"><%= booking.digger.name %></p>
   </div>
-  <div> 1 day ago </div> <!-- TODO -->
-  <% if booking.approved === true %>
-    <div class="btn btn-secondary">View</div>  <!-- TODO: only if not begun -->
-  <% elsif booking.approved === nil %>
-    <div class="btn btn-primary"><%= link_to "Accept", "/bookings/#{booking.id}/approval/true" %></div>
-    <div class="btn btn-danger"><%= link_to "Reject", "/bookings/#{booking.id}/approval/false" %></div>
-      <!-- TODO: only if not begun -->
-  <% else %>
-    <div class="btn btn-secondary">View</div>  <!-- TODO: only if not begun -->
-  <% end %>
-   </div>
+  <div>
+    <% if variant == 'req_made' %>
+    <p class="request-title">Owner:</p>
+    <p class="renter-name"><%= booking.digger.user.full_name %></p
+    <% else %>
+    <p class="request-title">From:</p>
+    <p class="renter-name"><%= booking.user.full_name %></p>
+    <% end %>
+    <% ago = (booking.created_at - Time.now).to_i %>
+    <% if ago > 1 %>
+    <% message = "#{ago} day ago" %>
+    <% else %>
+    <% message = ago == 0 ? "Today" : "Yesterday" %>
+    <% end %>
+    <p class=""><%= message %></p> <!-- TODO -->
+  </div>
+  <!-- TODO: once renter profile pages link_to booking.digger.user.full_name, user_path(booking.user) %> -->
+  <div>
+    <p class="request-title">Dates:</p>
+    <p class="dates"><%= booking.start_date %></p>
+    <p class="dates"><%= booking.end_date %></p>
+    <% request_days = (booking.end_date - booking.start_date).to_i %>
+    <% day_string = request_days == 1 ? "day" : "days" %>
+    <% string = "#{request_days} #{day_string}" %>
+    <p>(<%= string %>)</p>
+  </div>
+  <div>
+    <% if booking.approved === true %>
+    <p class="btn btn-sm btn-primary">View</p> <!-- TODO: only if not begun -->
+    <% elsif booking.approved === nil %>
+    <p class="btn btn-sm btn-success"><%= link_to "Accept", "/bookings/#{booking.id}/approval/true" %></p>
+    <p class="btn btn-sm btn-danger"><%= link_to "Reject", "/bookings/#{booking.id}/approval/false" %></p>
+    <!-- TODO: only if not begun -->
+    <% else %>
+    <p class="btn btn-sm btn-info">View</p>  <!-- TODO: only if not begun -->
+    <% end %>
+  </div>
 </div>

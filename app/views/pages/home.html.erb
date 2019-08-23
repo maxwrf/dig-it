@@ -7,21 +7,21 @@
       <h3 class="text-white">professional excavating equipment!</h3>
       <p>Change your life by digging holes all around the world.</p>
     </div>
-    <div class="date-form text-center m-auto navbar-trans">
-      <h2 class="col-text-primary">Book your beautiful digger.</h1>
+  </div>
+      <div class="date-form text-center mt-5 ml-5 navbar-trans">
+      <h2 class="col-text-primary" style="margin-bottom: 30px;">Book a digger.</h1>
       <%= form_tag diggers_path, :method => :get do %>
       <div class="form-group">
-        <%= label_tag(:start_date_day, "Rental Start:") %>
+        <%= label_tag(:start_date_day, "Start:") %>
         <%= select_date(Date.today, prefix: :start_date) %>
       </div>
       <div class="form-group">
-        <%= label_tag(:end_date_day, "Rental End:") %>
+        <%= label_tag(:end_date_day, "  End:") %>
         <%= select_date(Date.today, prefix: :end_date) %>
       </div>
-      <%= submit_tag("Search", class: "btn btn-primary")%>
+      <%= submit_tag("Search", class: "btn btn-secondary text-white")%>
       <% end %>
     </div>
-  </div>
 </div>
 
   <h2 class="mb-4 mt-5 text-center">Featured Diggers</h2>
